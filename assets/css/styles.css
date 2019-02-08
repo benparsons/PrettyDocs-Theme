@@ -1371,3 +1371,7 @@ select {
     padding: 30px 15px;
   }
 }
+
+.selectedPage {
+  background-color: #eee;
+}
