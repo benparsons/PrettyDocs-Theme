@@ -21,6 +21,192 @@
 
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <style>
+    #languages-list div {
+        width: 40%;
+        float: left;
+    }
+    .option-list {
+        text-align: initial;
+    }
+    </style>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(($) => {
+  /* Populate maturities list */
+  //var maturities =  "".split(',');
+
+  var maturities =  "Released,Stable,Late Beta,Beta,Early Beta,Late Alpha,Alpha,Early Alpha,No longer maintained".split(',');
+  maturities.forEach((maturity => {
+    if (maturity.length === 0) return;
+
+    var item = $('<div>');
+    var checkboxId = 'chk-maturity-' + slugify(maturity);
+
+    var checkbox = $('<input>')
+        .attr('id', checkboxId)
+        .attr('type', 'checkbox');
+    if (maturity !== "No longer maintained") { checkbox.attr('checked', 'checked'); };
+    
+    item.append(checkbox);
+    item.append($('<label>').attr('for', checkboxId).text(" " + maturity.trim()))
+    $("#maturities-list").append(item);
+  }));
+
+  /* For each maturity, a click event */
+  $("[id^=chk-maturity]").click(function(a) {
+    var maturity = a.target.id.replace("chk-maturity-", "");
+    checkVisibility($('.filterableProject[data-maturity="' + maturity + '"]').toArray());
+  });
+
+  /* Populate languages list */
+  //var languages =  "".split(',');
+  var languages =  '<!--LANGUAGES-->'.split(',');
+  if (languages.indexOf("Unknown") === -1) languages.push("Unknown");
+  languages.forEach((language => {
+    if (language.length === 0) return;
+
+    var item = $('<div>').addClass("item-language");
+    var checkboxId = 'chk-language-' + slugify(language);
+    item.append(
+      $('<input>')
+        .attr('id', checkboxId)
+        .attr('type', 'checkbox')
+        .attr('checked', 'checked')
+    );
+    item.append($('<label>').attr('for', checkboxId).text(" " + language.trim()))
+    $("#languages-list").append(item);
+  }));
+
+  /* For each language, a click event */
+  $("[id^=chk-language]").click(function(a) {
+    var language = a.target.id.replace("chk-language-", "");
+    checkVisibility($('.filterableProject[data-language="' + language + '"]').toArray());
+  });
+
+  /* Populate licenses list */
+  //var licenses =  "".split(',');
+  var licenses =  ",GPL3,AGPL3,Apache,Artistic2,MIT,CC0 1.0,Unknown,N/A,ISC,BSD,LGPL2.1".split(',');
+  if (licenses.indexOf("Unknown") === -1) licenses.push("Unknown");
+  licenses.forEach((license => {
+    if (license.length === 0) return;
+
+    var item = $('<div>');
+    var checkboxId = 'chk-license-' + slugify(license);
+    item.append(
+      $('<input>')
+        .attr('id', checkboxId)
+        .attr('type', 'checkbox')
+        .attr('checked', 'checked')
+    );
+    item.append($('<label>').attr('for', checkboxId).text(" " + license.trim()))
+    $("#licenses-list").append(item);
+  }));
+
+  /* For each license, a click event */
+  $("[id^=chk-license]").click(function(a) {
+    var license = a.target.id.replace("chk-license-", "");
+    checkVisibility($('.filterableProject[data-license="' + license + '"]').toArray());
+  });
+
+
+  $("#chk-featured").click(function(a) {
+    checkVisibility($('.filterableProject').toArray());
+  });
+
+  /* Missing data is classed as 'Unknown' for now */
+  jQuery('li[data-language=""]').attr("data-language", "Unknown");
+  jQuery('li[data-license=""]').attr("data-license", "Unknown");
+
+  /* controls for the All/None selectors */
+  $("#maturities-all").click(() => {
+    $("[id^=chk-maturity]").prop("checked", true);
+    checkVisibility($('.filterableProject').toArray());
+  });
+  $("#maturities-none").click(() => {
+    $("[id^=chk-maturity]").prop("checked", false);
+    checkVisibility($('.filterableProject').toArray());
+  });
+  $("#languages-all").click(() => {
+    $("[id^=chk-language]").prop("checked", true);
+    checkVisibility($('.filterableProject').toArray());
+  });
+  $("#languages-none").click(() => {
+    $("[id^=chk-language]").prop("checked", false);
+    checkVisibility($('.filterableProject').toArray());
+  });
+
+  $("#licenses-all").click(() => {
+    $("[id^=chk-license]").prop("checked", true);
+    checkVisibility($('.filterableProject').toArray());
+  });
+  $("#licenses-none").click(() => {
+    $("[id^=chk-license]").prop("checked", false);
+    checkVisibility($('.filterableProject').toArray());
+  });
+
+  /* Make the visibility changes on click */
+  function checkVisibility(projects) {
+    projects.forEach(function(project) {
+      project = $(project);
+      var project_maturity = project.data("maturity");
+      var correct_maturity = $("#chk-maturity-" + project_maturity).prop("checked");
+      if (! correct_maturity && project_maturity !== "") {
+        project.hide(400);
+        return;
+      }
+      var project_language = project.data("language");
+      var correct_language = $("#chk-language-" + project_language.toString()).prop("checked");
+      if (! correct_language && project_language !== "") {
+        project.hide(400);
+        return;
+      }
+      var project_license = project.data("license");
+      var correct_license = $("#chk-license-" + project_license.toString()).prop("checked");
+      if (! correct_license && project_license !== "") {
+        project.hide(400);
+        return;
+      }
+      var project_featured = project.data("featured");
+      var correct_featured = $("#chk-featured").prop("checked");
+      if (correct_featured && project_featured === false) {
+        project.hide(400);
+        return;
+      }
+      project.show(400);
+    });
+  }
+
+  function slugify(str) {
+    if (!str) return "";
+    const a = 'àáäâãåèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
+    const b = 'aaaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
+    const p = new RegExp(a.split('').join('|'), 'g')
+    return str.toString().toLowerCase()
+      .replace(/\s+/g, '-') // Replace spaces with
+      .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+      .replace(/&/g, '-and-') // Replace & with ‘and’
+      .replace(/[^\w\-]+/g, '') // Remove all non-word characters
+      .replace(/\-\-+/g, '-') // Replace multiple — with single -
+      .replace(/^-+/, '') // Trim — from start of text .replace(/-+$/, '') // Trim — from end of text
+  }
+
+  /* show contols if JS is actually available... */
+  $("#controls").show();
+  $("li.project a img").each(function(a, b) {
+    console.log($(b).attr("src"));
+    if ($(b).attr("src").length === 0) {
+      $(b).attr("src", "/docs/projects/images/noimage.png");
+      //$(b).attr("style", "opacity: 0.4;");
+      $(b).css({opacity:0.5, height:"120px"})
+    }
+  });
+});
+</script>
 
 </head> 
 
@@ -71,11 +257,78 @@
                 <div id="showcase" class="doc-body row">
                         <div class="doc-content col-md-9 col-12 order-1">
                             <div class="content-inner">
+
+                                <section class="doc-section">
+                                    <div class="section-block">
+                                        <div class="row">
+                                            <div class="col-md-4 col-12 mb-3">
+                                                <div class="theme-card">
+                                                    <div class="card-block">
+                                                        <div id="maturities" class="control-column nav-link">
+                                                            <h4>Maturity</h4>
+                                                            <span id="maturities-all">All</span>
+                                                            <span id="maturities-none">None</span>
+                                                            <div id="maturities-list" class="option-list"></div>
+                                                        </div>
+
+                                                        <hr />
+
+                                                        <div id="featured" class="control-column nav-link">
+                                                                <h4>Featured</h4>
+                                                                <div id="maturities-list" class="option-list">
+                                                                        <div>
+                                                                            <input id="chk-featured" type="checkbox">
+                                                                            <label for="chk-featured"> Featured Projects Only</label>
+                                                                        </div>
+                                                                </div>
+                                                            </div>
+                                                    </div><!--//card-block-->
+                                                </div><!--//theme-card-->
+                                            </div>
+                                            <div class="col-md-5 col-12 mb-3">
+                                                <div class="theme-card">
+                                                    <div class="card-block">
+                                                        <div id="languages" class="control-column nav-link">
+                                                            <h4>Language</h4>
+                                                            <span id="languages-all">All</span>
+                                                            <span id="languages-none">None</span>
+                                                            <br />
+                                                            <div id="languages-list" class="option-list" style="display: inline-table;column-count: 2;width: 400px;"></div>
+                                                        </div>
+                                                    </div><!--//card-block-->
+                                                </div><!--//theme-card-->
+                                            </div>
+                                            <div class="col-md-3 col-12 mb-3">
+                                                <div class="theme-card">
+                                                    <div class="card-block">
+                                                        <div id="licenses" class="control-column nav-link">
+                                                            <h4>License</h4>
+                                                            <span id="licenses-all">All</span>
+                                                            <span id="licenses-none">None</span>
+                                                            <div id="licenses-list" class="option-list"></div>
+                                                        </div>
+                                                    </div><!--//card-block-->
+                                                </div><!--//theme-card-->
+                                            </div>
+                                            
+                                        </div><!--//row-->
+                                    </div><!--//section-block-->
+                                </section><!--//doc-section-->
+
                                 <section class="doc-section">
                                     <h3 id="clients" class="section-title">Clients</h3>
                                     <div class="section-block">
                                         <div class="row">
                                         <!-- ###CLIENTS### -->
+                                        </div><!--//row-->
+                                    </div><!--//section-block-->
+                                </section><!--//doc-section-->
+
+                                <section class="doc-section">
+                                    <h3 id="servers" class="section-title">Servers</h3>
+                                    <div class="section-block">
+                                        <div class="row">
+                                        <!-- ###SERVERS### -->
                                         </div><!--//row-->
                                     </div><!--//section-block-->
                                 </section><!--//doc-section-->
@@ -85,17 +338,42 @@
                                     <div class="section-block">
                                         <div class="row">
                                         <!-- ###BOTS### -->
-                                        </div>
-                                    </div>
-                                </section>
+                                        </div><!--//row-->
+                                    </div><!--//section-block-->
+                                </section><!--//doc-section-->
+                                
+                                <section class="doc-section">
+                                    <h3 id="sdks" class="section-title">SDKs</h3>
+                                    <div class="section-block">
+                                        <div class="row">
+                                        <!-- ###SDKS### -->
+                                        </div><!--//row-->
+                                    </div><!--//section-block-->
+                                </section><!--//doc-section-->
+                                
+                                <section class="doc-section">
+                                    <h3 id="sdks" class="section-title">Other</h3>
+                                    <div class="section-block">
+                                        <div class="row">
+                                        <!-- ###OTHERS### -->
+                                        </div><!--//row-->
+                                    </div><!--//section-block-->
+                                </section><!--//doc-section-->
                                                             
                             </div><!--//content-inner-->
                         </div><!--//doc-content-->
                         <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
                                 <div id="doc-nav" class="doc-nav">
                                     <nav id="doc-menu" class="nav doc-menu flex-column sticky">
-                                        <a class="nav-link scrollto" href="#clients">clients</a>
-                                        <a class="nav-link scrollto" href="#bots">bots</a> 
+                                        <a class="nav-link scrollto" href="#clients">Clients</a>
+                                        <a class="nav-link scrollto" href="#servers">Servers</a>
+                                        <a class="nav-link scrollto" href="#bots">Bots</a> 
+                                        <a class="nav-link scrollto" href="#sdks">SDKs</a> 
+                                        <a class="nav-link scrollto" href="#other">Other</a> 
+
+                                        
+
+                                        
                                     </nav><!--//doc-menu-->
                                 </div>
                             </div><!--//doc-sidebar-->
