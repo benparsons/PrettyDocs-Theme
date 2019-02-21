@@ -21,6 +21,7 @@
 
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <link id="theme-style" rel="stylesheet" href="assets/css/newdocs.css">
 
 </head> 
 
@@ -48,7 +49,7 @@
                 <div id="showcase" class="doc-body row">
                     <div class="doc-content col-md-12 col-12 order-1">
                         <div class="content-inner">
-                            <section id="top-section" class="doc-section">
+                            <section id="bridges-top-section" class="doc-section">
                                 <div class="section-block">
                                     <div class="row">
                                         
@@ -94,7 +95,7 @@
 </div>
 <div class="col-md-2 col-12 mb-3">
     <div class="theme-card">
-        <a href="#whatsapp" target="_blank"><img class="img-fluid" src="/docs/projects/imageswhatsapp-logo.png" alt="screenshot" /></a>
+        <a href="#whatsapp" target="_blank"><img class="img-fluid" src="/docs/projects/images/whatsapp-logo.png" alt="screenshot" /></a>
         <div class="card-block">
             <h4 class="card-title">WhatsApp</h4>
             <p class="card-text"></p>
@@ -206,10 +207,13 @@
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
 
-                            <section id="guides-list" class="doc-section">
+                            <section id="bridges-list" class="doc-section">
                                 <div class="section-block">
-                                        <h1 id="rss">RSS</h1>
-<h2 id="feedbot">feedbot</h2>
+                                        <section id="irc">
+<h1>IRC</h1>
+<section id="matrix-appservice-irc">
+<h2>matrix-appservice-irc</h2>
+<p><img src="undefined" alt=""></p>
 <table>
 <thead>
 <tr>
@@ -222,7 +226,67 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">[Ryan Rix]</td>
+<td style="text-align:center"><a href="https://matrix.org">Matrix.org team</a></td>
+<td style="text-align:center"><a href="https://github.com/matrix-org/matrix-appservice-irc">matrix-appservice-irc</a></td>
+<td style="text-align:center">JavaScript</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Beta</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+<p>An application service gateway from Matrix.org for bridging between IRC networks and Matrix, written using <a href="https://matrix.org/blog/project/matrix-appservice-node/">matrix-appservice-node</a>. You can get the <a href="https://github.com/matrix-org/matrix-appservice-irc">code on github</a>.</p>
+<p>Supports dynamically bridging IRC channels on demand; synchronised user-lists, and other goodness.</p>
+<br clear="all" /><section id="slack">
+<h1>Slack</h1>
+<section id="matrix-appservice-slack">
+<h2>matrix-appservice-slack</h2>
+<p><img src="/docs/projects/images/slack-logo.svg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">[leonerd, Half-Shot, illicitonion, Cadair and others]</td>
+<td style="text-align:center"><a href="https://github.com/matrix-org/matrix-appservice-slack">matrix-appservice-slack</a></td>
+<td style="text-align:center">JavaScript</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Beta</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+<p>This project bridges <a href="https://slack.com">Slack</a> to Matrix.</p>
+<p>The bridge allows you to connect Matrix rooms and Slack channels together. It supports bridging via webhooks or via a dedicated slack integration (using the Events API). Currently the bridge supports sending text and files, with more advanced features like threading and sending direct messages coming in the future. matrix-appservice-slack is regularly hacked on and is accepting PRs for bug fixes and new features.</p>
+<br clear="all" /><section id="rss">
+<h1>RSS</h1>
+<section id="feedbot">
+<h2>feedbot</h2>
+<p><img src="/docs/projects/images/rss.svg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://rix.si/">Ryan Rix</a></td>
 <td style="text-align:center"><a href="https://code.rix.si/rrix/matrix-feedbot">feedbot</a></td>
 <td style="text-align:center">Python</td>
 <td style="text-align:center"></td>
@@ -230,12 +294,16 @@
 </tr>
 </tbody>
 </table>
-<p><img src="/docs/projects/images/rss.svg" alt=""></p>
+</section>
+</section>
 
 <p>Connect to RSS and Twitter feeds via Ryan Rix's feedbot!</p>
 <p>Check it out from <a href="https://code.rix.si/rrix/matrix-feedbot">Ryan's git repo</a></p>
-<h1 id="discord">discord</h1>
-<h2 id="matrix-appservice-discord">matrix-appservice-discord</h2>
+<br clear="all" /><section id="gitter">
+<h1>Gitter</h1>
+<section id="matrix-appservice-gitter">
+<h2>matrix-appservice-gitter</h2>
+<p><img src="/docs/projects/images/gitter-logo.svg" alt=""></p>
 <table>
 <thead>
 <tr>
@@ -248,15 +316,53 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">[Half-Shot]</td>
-<td style="text-align:center"><a href="https://github.com/Half-Shot/matrix-appservice-discord">undefined</a></td>
+<td style="text-align:center"><a href="https://matrix.org">The Matrix.org Team</a></td>
+<td style="text-align:center"><a href="https://github.com/matrix-org/matrix-appservice-gitter">matrix-appservice-gitter</a></td>
+<td style="text-align:center">JavaScript</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Beta</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+<p>✗ 1:1 Chats<br>
+✓ Group Chats<br>
+✗ Files<br>
+✗ Formatted Messages<br>
+✗ History<br>
+✗ Read Receipts<br>
+✗ Typing notifications</p>
+<p>When using <a href="https://riot.im/app/">Riot on riot.im</a>, you can enable Gitter integration per-room. Click
+the &quot;Manage Integrations&quot; (nine squares) button at the top of the page.</p>
+<br clear="all" /><section id="discord">
+<h1>Discord</h1>
+<section id="matrix-appservice-discord">
+<h2>matrix-appservice-discord</h2>
+<p><img src="/docs/projects/images/discord-logo.svg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://github.com/Half-Shot/">Half-Shot</a></td>
+<td style="text-align:center"><a href="https://github.com/Half-Shot/matrix-appservice-discord">matrix-appservice-discord</a></td>
 <td style="text-align:center">TypeScript</td>
 <td style="text-align:center"></td>
 <td style="text-align:center">Beta</td>
 </tr>
 </tbody>
 </table>
-<p><img src="undefined" alt=""></p>
+</section>
+</section>
 
 <p>This project bridges <a href="https://discordapp.com">Discord</a> to Matrix via the Application API.</p>
 <p>✓ Plain Text<br>
@@ -272,8 +378,11 @@
 ✗ Calls</p>
 <p>You can self host <a href="https://github.com/Half-Shot/matrix-appservice-discord">matrix-appservice-discord</a> in order to bridge your rooms
 from Discord, it is also available from t2bot.io at <a href="https://t2bot.io/discord">https://t2bot.io/discord</a>.</p>
-<h1 id="rocketchat">rocketchat</h1>
-<h2 id="matrix-rocketchat">matrix-rocketchat</h2>
+<br clear="all" /><section id="rocketchat">
+<h1>rocketchat</h1>
+<section id="matrix-rocketchat">
+<h2>matrix-rocketchat</h2>
+<p><img src="undefined" alt=""></p>
 <table>
 <thead>
 <tr>
@@ -286,7 +395,7 @@ from Discord, it is also available from t2bot.io at <a href="https://t2bot.io/di
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">[exul]</td>
+<td style="text-align:center"><a href="https://github.com/exul/">exul</a></td>
 <td style="text-align:center"><a href="https://github.com/exul/matrix-rocketchat">matrix-rocketchat</a></td>
 <td style="text-align:center">Rust</td>
 <td style="text-align:center"></td>
@@ -294,12 +403,16 @@ from Discord, it is also available from t2bot.io at <a href="https://t2bot.io/di
 </tr>
 </tbody>
 </table>
-<p><img src="undefined" alt=""></p>
+</section>
+</section>
 
 <p>This is an application service that bridges Matrix to Rocket.Chat, written in Rust.</p>
 <p>Find it on <a href="https://github.com/exul/matrix-rocketchat">GitHub</a>.</p>
-<h1 id="telegram">Telegram</h1>
-<h2 id="mautrix-telegram">mautrix-telegram</h2>
+<br clear="all" /><section id="i-message">
+<h1>iMessage</h1>
+<section id="imessage-bridge">
+<h2>imessage bridge</h2>
+<p><img src="/docs/projects/images/imessage-logo.jpg" alt=""></p>
 <table>
 <thead>
 <tr>
@@ -312,15 +425,116 @@ from Discord, it is also available from t2bot.io at <a href="https://t2bot.io/di
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">[Tulir]</td>
-<td style="text-align:center"><a href="https://github.com/tulir/mautrix-telegram">undefined</a></td>
+<td style="text-align:center"><a href="https://github.com/kfatehi/">Keyvan Fatehi</a></td>
+<td style="text-align:center"><a href="https://github.com/matrix-hacks/matrix-puppet-imessage">imessage bridge</a></td>
+<td style="text-align:center">JavaScript</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Alpha</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+<p>This is a Matrix bridge for Apple iMessage. It connects your homeserver to Messages.app</p>
+<p>Requires a Mac with a functional Messages.app, already authenticated.</p>
+<p>Find the source on <a href="https://github.com/kfatehi/matrix-appservice-imessage">GitHub</a>.</p>
+<br clear="all" /><section id="email">
+<h1>Email</h1>
+<section id="matrix-email-bridge">
+<h2>Matrix Email Bridge</h2>
+<p><img src="/docs/projects/images/email-icon.svg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">[Kamax.io and Open-Xchange]</td>
+<td style="text-align:center"><a href="https://github.com/kamax-io/matrix-appservice-email">Matrix Email Bridge</a></td>
+<td style="text-align:center">Java</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Alpha</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+<p>An application service gateway for bridging between Email and Matrix, written using Spring Boot (Java) using <a href="https://github.com/kamax-io/matrix-java-sdk">matrix-java-sdk</a>.
+You can get the <a href="https://github.com/kamax-io/matrix-appservice-email">code on github</a>.</p>
+<p>Features:</p>
+<ul>
+<li>Matrix to Email forwarding</li>
+<li>Email to Matrix forwarding</li>
+<li>Email &lt;-&gt; Matrix &lt;-&gt; Email forwarding, if several bridge users are present within a room</li>
+<li>Fully configuration notification templates, per event</li>
+<li>Subscription portal where E-mail users can manage their notifications</li>
+</ul>
+<p>It can be self hosted, and it is also available from t2bot.io at <a href="https://t2bot.io/email">https://t2bot.io/email</a>.</p>
+<br clear="all" /><section id="sms">
+<h1>SMS</h1>
+<section id="sms-matrix">
+<h2>SmsMatrix</h2>
+<p><img src="/docs/projects/images/sms-icon.svg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">[Gerben Droogers]</td>
+<td style="text-align:center"><a href="https://github.com/tijder/SmsMatrix">SmsMatrix</a></td>
+<td style="text-align:center">Java</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Alpha</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+<p>A simple Android SMS (text message) &lt;--&gt; Matrix bridge. With this bridge you can get all your text messages on Matrix and reply to them.</p>
+<p>Get it and report issues at <a href="https://github.com/tijder/SmsMatrix">github</a></p>
+<br clear="all" /><section id="telegram">
+<h1>Telegram</h1>
+<section id="mautrix-telegram">
+<h2>mautrix-telegram</h2>
+<p><img src="/docs/projects/images/telegram-logo.svg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://github.com/tulir">Tulir</a></td>
+<td style="text-align:center"><a href="https://github.com/tulir/mautrix-telegram">mautrix-telegram</a></td>
 <td style="text-align:center">Python</td>
 <td style="text-align:center"></td>
 <td style="text-align:center">Beta</td>
 </tr>
 </tbody>
 </table>
-<p><img src="undefined" alt=""></p>
+</section>
+</section>
 
 <p>✓ Send message content (text, formatting, files, etc..)<br>
 ✓ Redact/delete messages<br>
@@ -329,8 +543,11 @@ from Discord, it is also available from t2bot.io at <a href="https://t2bot.io/di
 ✓ Images/Audio/Video/files</p>
 <p>and much more. Read the current feature list at <a href="https://github.com/tulir/mautrix-telegram">https://github.com/tulir/mautrix-telegram</a>.</p>
 <p><a href="2017-11-28-mautrix-telegram.html">mautrix-telegram</a> can be self hosted, and is also available at [t2bot.io]: <a href="https://t2bot.io/telegram">https://t2bot.io/telegram</a></p>
-<h1 id="mastodon">mastodon</h1>
-<h2 id="mx-toot">MXToot</h2>
+<br clear="all" /><section id="slack">
+<h1>Slack</h1>
+<section id="matrix-puppet-slack">
+<h2>matrix-puppet-slack</h2>
+<p><img src="/docs/projects/images/slack-logo.svg" alt=""></p>
 <table>
 <thead>
 <tr>
@@ -343,7 +560,105 @@ from Discord, it is also available from t2bot.io at <a href="https://t2bot.io/di
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">[ma1uta]</td>
+<td style="text-align:center"><a href="https://github.com/kfatehi/">Keyvan Fatehi</a></td>
+<td style="text-align:center"><a href="https://github.com/matrix-hacks/matrix-puppet-slack">matrix-puppet-slack</a></td>
+<td style="text-align:center">JavaScript</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Beta</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+<p>This is an unofficial matrix slack bridge that works by means of <a href="https://github.com/AndrewJDR/matrix-puppet-bridge">user puppetting</a>.</p>
+<p>Get your <code>user_access_token</code> from here:</p>
+<p>https://api.slack.com/docs/oauth-test-tokens</p>
+<p>The bridge uses that access token to connect as a client using the slack RTM API.</p>
+<p>This technique does not require admin on the slack team; instead, the bridge is simply a custom slack client.</p>
+<p>The bridge supports multiple teams at once, see the config.sample.json</p>
+<br clear="all" /><section id="whats-app">
+<h1>WhatsApp</h1>
+<section id="mautrix-whatsapp">
+<h2>mautrix-whatsapp</h2>
+<p><img src="/docs/projects/images/whatsapp-logo.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://github.com/tulir">Tulir</a></td>
+<td style="text-align:center"><a href="https://github.com/tulir/mautrix-whatsapp">mautrix-whatsapp</a></td>
+<td style="text-align:center">Go</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Alpha</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+<p>A Matrix-WhatsApp puppeting bridge. Written in the <a href="https://github.com/Rhymen/go-whatsapp">Rhymen/go-whatsapp</a> implementation of the <a href="https://github.com/sigalor/whatsapp-web-reveng">sigalor/whatsapp-web-reveng</a> project.</p>
+<br clear="all" /><section id="hangouts">
+<h1>Hangouts</h1>
+<section id="matrix-appservice-hangouts">
+<h2>matrix-appservice-hangouts</h2>
+<p><img src="/docs/projects/images/hangouts-icon.svg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://github.com/Cadair">Cadair</a></td>
+<td style="text-align:center"><a href="https://github.com/Cadair/matrix-appservice-hangouts">matrix-appservice-hangouts</a></td>
+<td style="text-align:center">Python</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Alpha</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+<p>A prototype Matrix&lt;-&gt;Hangouts appservice written in Python 3.6 using asyncio.</p>
+<p>This is a <a href="https://matrix.org/docs/guides/application_services.html">matrix appservice</a>
+with the objective of being a fully featured puppeting multi-user hangouts bridge.</p>
+<p>This bridge is implemented in Python 3.6+ using asyncio and the
+<a href="https://github.com/tdryer/hangups">hangups</a> library. This library contains an
+asyncio implementation of parts of the matrix client-server API and the
+application service API.</p>
+<br clear="all" /><section id="mastodon">
+<h1>mastodon</h1>
+<section id="mx-toot">
+<h2>MXToot</h2>
+<p><img src="undefined" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://github.com/ma1uta/">ma1uta</a></td>
 <td style="text-align:center"><a href="https://github.com/ma1uta/mxtoot">mxtoot</a></td>
 <td style="text-align:center">Java</td>
 <td style="text-align:center"></td>
@@ -351,10 +666,139 @@ from Discord, it is also available from t2bot.io at <a href="https://t2bot.io/di
 </tr>
 </tbody>
 </table>
-<p><img src="undefined" alt=""></p>
+</section>
+</section>
 
 <p>Matrix-Mastodon bot written on java</p>
+<br clear="all" /><section id="facebook-messenger">
+<h1>Facebook Messenger</h1>
+<section id="matrix-puppet-facebook">
+<h2>matrix-puppet-facebook</h2>
+<p><img src="/docs/projects/images/messenger-logo.svg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://github.com/matrix-hacks">matrix-hacks</a></td>
+<td style="text-align:center"><a href="https://github.com/matrix-hacks/matrix-puppet-facebook">matrix-puppet-facebook</a></td>
+<td style="text-align:center">JavaScript</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Beta</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 
+<p><a href="2019-02-20-matrix-puppet-facebook-messenger.html">matrix-puppet-facebook</a> must be hosted on your own homeserver, full
+setup instructions are available on the repo.</p>
+<br clear="all" /><section id="group-me">
+<h1>GroupMe</h1>
+<section id="matrix-puppet-groupme">
+<h2>matrix-puppet-groupme</h2>
+<p><img src="/docs/projects/images/groupme-icon.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://github.com/matrix-hacks">matrix-hacks</a></td>
+<td style="text-align:center"><a href="https://github.com/matrix-hacks/matrix-puppet-groupme">matrix-puppet-groupme</a></td>
+<td style="text-align:center">JavaScript</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Beta</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+<p><a href="2019-02-20-matrix-puppet-groupme.html">matrix-puppet-groupme</a> must be hosted on your own homeserver, full
+setup instructions are available on the repo.</p>
+<br clear="all" /><section id="hangouts">
+<h1>Hangouts</h1>
+<section id="matrix-puppet-hangouts">
+<h2>matrix-puppet-hangouts</h2>
+<p><img src="/docs/projects/images/hangouts-icon.svg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://github.com/matrix-hacks">matrix-hacks</a></td>
+<td style="text-align:center"><a href="https://github.com/matrix-hacks/matrix-puppet-hangouts">matrix-puppet-hangouts</a></td>
+<td style="text-align:center">null</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">null</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+<p><a href="2019-02-20-matrix-puppet-hangouts.html">matrix-puppet-hangouts</a> can be self-hosted, full setup instructions are
+available on the repo.</p>
+<br clear="all" /><section id="skype">
+<h1>Skype</h1>
+<section id="matrix-puppet-skype">
+<h2>matrix-puppet-skype</h2>
+<p><img src="/docs/projects/images/skype-icon.svg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Author</th>
+<th style="text-align:center">Repo</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Matrix Room</th>
+<th style="text-align:center">Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://github.com/matrix-hacks">matrix-hacks</a></td>
+<td style="text-align:center"><a href="https://github.com/matrix-hacks/matrix-puppet-skype">matrix-puppet-skype</a></td>
+<td style="text-align:center">JavaScript</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Beta</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+<p>✓ Skype to Matrix direct text message<br>
+✓ Matrix to Skype direct text message<br>
+✓ Skype to Matrix direct image attachment message<br>
+✓ Matrix to Skype direct image attachment message<br>
+✓ group messaging<br>
+✗ read receipts<br>
+✗ contact list syncing</p>
+<p><a href="2019-02-20-matrix-puppet-skype.html">matrix-puppet-skype</a> must be hosted on your own homeserver, full
+setup instructions are available on the repo. It uses
+<a href="https://github.com/ocilo/skype-http">skype-http</a> under the hood.</p>
+<br clear="all" />
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
                                           
