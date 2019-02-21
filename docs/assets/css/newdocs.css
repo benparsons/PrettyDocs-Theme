@@ -39,3 +39,7 @@ small {
 h2 {
     padding-top: 10px;
 }
+
+.try-matrix-now-container img {
+    max-height: 200px;
+}
