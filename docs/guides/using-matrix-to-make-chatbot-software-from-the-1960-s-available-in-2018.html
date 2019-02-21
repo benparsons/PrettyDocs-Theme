@@ -20,6 +20,7 @@
       
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="../assets/css/styles.css">
+    <link id="theme-style" rel="stylesheet" href="../assets/css/newdocs.css">
     
 </head> 
 
@@ -35,13 +36,13 @@
                     </h1>
                 </div><!--//branding-->
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/docs/">Home</a></li>
                     <li class="breadcrumb-item active">Using Matrix to make Chatbot software from the 1960s available in 2018</li>
                 </ol>
             </div><!--//container-->
         </header><!--//header-->
         <div class="doc-wrapper">
-            <div class="container">
+            <div class="container documentation-container">
                 <div id="doc-header" class="doc-header text-center">
                     <h1 class="doc-title">Using Matrix to make Chatbot software from the 1960s available in 2018</h1>
                 </div><!--//doc-header-->
@@ -128,7 +129,7 @@ from <a href="https://github.com/turt2live">TravisR</a>.</p>
 <h3 id="code-walkthrough">Code Walkthrough</h3>
 <p>First, we'll need a new instance of the Bot SDK, which we can obtain from NPM as
 follows:</p>
-<pre><code>npm install matrix-bot-sdk
+<pre><code class="language-unix">npm install matrix-bot-sdk
 </code></pre>
 <p>Then, in our application code, we will instantiate and start a new client. Note
 that you can obtain an access token for the bot <a href="https://t2bot.io/docs/access_tokens/">using
@@ -216,14 +217,14 @@ ways of achieving this, one of which is to use <code>systemd</code>. <a href="ht
 Pi</a> (possibly using a
 graphical desktop if one is installed, or using ssh) and enter this command to
 access the correct directory:</p>
-<pre><code>cd /etc/systemd/system
+<pre><code class="language-unix">cd /etc/systemd/system
 </code></pre>
 <p>Now, we'll use vim to create a file describing the service we want to create:</p>
-<pre><code>vim elizabot.service
+<pre><code class="language-unix">vim elizabot.service
 </code></pre>
 <p>Finally, enter the following text (you may need to change paths depending on
 where your script is located):</p>
-<pre><code>[Unit]
+<pre><code class="language-unix">[Unit]
 Description=Elizabot
 After=multi-user.target
 
@@ -235,7 +236,7 @@ ExecStart=/usr/bin/node /home/pi/elizabot/index.js &gt; /home/pi/elizabot/log.lo
 WantedBy=multi-user.target
 </code></pre>
 <p>... and run the following to enable the service:</p>
-<pre><code>sudo systemctl enable elizabot.service
+<pre><code class="language-unix">sudo systemctl enable elizabot.service
 </code></pre>
 <p>Now, whenever you plug in your Pi, your bot will be launched and ready to go. Of
 course, it is quite possible to run this software on a server, but having a

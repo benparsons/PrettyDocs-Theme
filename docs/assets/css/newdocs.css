@@ -44,3 +44,7 @@ h2 {
     max-height: 200px;
     float: initial;
 }
+
+.documentation-container img {
+    max-width: 100%;
+}

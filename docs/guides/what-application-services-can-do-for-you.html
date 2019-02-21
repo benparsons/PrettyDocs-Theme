@@ -20,6 +20,7 @@
       
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="../assets/css/styles.css">
+    <link id="theme-style" rel="stylesheet" href="../assets/css/newdocs.css">
     
 </head> 
 
@@ -35,13 +36,13 @@
                     </h1>
                 </div><!--//branding-->
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/docs/">Home</a></li>
                     <li class="breadcrumb-item active">What Application services can do for you</li>
                 </ol>
             </div><!--//container-->
         </header><!--//header-->
         <div class="doc-wrapper">
-            <div class="container">
+            <div class="container documentation-container">
                 <div id="doc-header" class="doc-header text-center">
                     <h1 class="doc-title">What Application services can do for you</h1>
                 </div><!--//doc-header-->
@@ -52,9 +53,7 @@
 <section class="doc-section">
 <h1 id="application-services">Application services</h1>
 <p>Application services are distinct modules which sit alongside a homeserver providing arbitrary extensible functionality decoupled from the homeserver implementation. Just like the rest of Matrix, they communicate via HTTP using JSON. Application services function in a very similar way to traditional clients, but they are given much more power than a normal client. They can reserve entire namespaces of room aliases and user IDs for their own purposes. They can silently monitor events in rooms, or any events directed at any user ID. This power allows application services to have extremely useful abilities which overall enhance the end user experience.</p>
-<p>|</p>
 <p>One of the main use cases for application services is protocol bridges. Our Matrix server on Matrix.org links in to various IRC channels and networks. This functionality was initially implemented as a simple bot which resided as a user on the Matrix rooms we wanted to link to freenode channels (#matrix, #matrix-dev, #openwebrtc and #vuc etc). There was nothing special about this bot; it is just treated as a client. However, as we started to rely on it more and more though, we realised that there were things that were impossible for simple client-side bots to do by themselves - for example, the bot could not reserve the virtual user IDs it wanted to create, and could not lazily bridge arbitrary IRC rooms on-the-fly - and this spurred the development of Application Services.</p>
-<p>|</p>
 <section class="doc-section">
 <h3 id="some-of-the-features-of-the-irc-application-service-we-have-since-implemented-include">Some of the features of the IRC application service we have since implemented include:</h3>
 <ul>
@@ -64,7 +63,6 @@
 <li>IRC nick changing support: Matrix users are no longer forced to use &quot;M-&quot; nicks and can change them by sending &quot;!nick&quot; messages directly to the bridge.</li>
 <li>Ident support: This allows usernames to be authenticated for virtual IRC clients, which means IRC bans can be targeted at the Matrix user rather than the entire application service.</li>
 </ul>
-<p>|</p>
 </section>
 <section class="doc-section">
 <h3 id="the-use-of-the-application-services-api-means">The use of the Application Services API means:</h3>
@@ -74,7 +72,6 @@
 <li>The bot can trivially manage hundreds of users. Events are pushed to the application service directly. If you tried to do this as a client-side bot, you would need one event stream connection per virtual user.</li>
 <li>The bot can lazily create rooms on demand. This means Matrix users can join non-existent room aliases and have the application service quickly track an IRC channel and create a room with that alias, allowing the join request to succeed.</li>
 </ul>
-<p>|</p>
 </section>
 <section class="doc-section">
 <h3 id="implementation-details">Implementation details:</h3>
@@ -84,15 +81,12 @@
 <li>Supports sending metrics in statsd format.</li>
 <li>Uses matrix-appservice-node to provide a standardised interface when writing application services, rather than an explicit web framework (though under the hood matrix-appservice-node is using Express).</li>
 </ul>
-<p>|</p>
 <p>At present, the IRC application service is in beta, and is being run on #matrix and #matrix-dev. If you want to give it a go, &lt;a title=&quot;Matrix-IRC Application Service&quot; href=&quot;https://github.com/matrix-org/matrix-appservice-irc&quot;&gt;check it out on Github&lt;/a&gt;!</p>
-<p>|</p>
 </section>
 </section>
 <section class="doc-section">
 <h1 id="what-application-services-can-do-for-you">What Application services can do for you</h1>
 <p>Application services have enormous potential for creating new and exciting ways to transform and enhance the core Matrix protocol. For example, you could aggregate information from multiple rooms into a summary room, or create throwaway virtual user accounts to proxy messages for a fixed user ID on-the-fly. As you may expect, all of this power assumes a high degree of trust between application services and homeservers. Only homeserver admins can allow an application service to link up with their homeserver, and the application service is in no way federated to other homeservers. You can think of application services as additional logic on the homeserver itself, without messing around with the book-keeping that homeservers have to do. This makes adding useful functionality very easy.</p>
-<p>|</p>
 <section class="doc-section">
 <h3 id="example">Example</h3>
 <p>The application service (AS) API itself uses webhooks to communicate from the homeserver to the AS:</p>
@@ -122,7 +116,7 @@ if __name__ == &quot;__main__&quot;:
     app.run()
 </code></pre>
 <p>Set your new application service running on port 5000 with:</p>
-<pre><code>python app_service.py
+<pre><code class="language-unix">python app_service.py
 </code></pre>
 <p>The homeserver needs to know that the application service exists before it will send requests to it. This is done via a registration YAML file which is specified in Synapse's main config file e.g. &lt;code&gt;homeserver.yaml&lt;/code&gt;. The server admin needs to add the application service registration configuration file as an entry to this file.</p>
 <pre><code class="language-yaml"># homeserver.yaml
@@ -156,7 +150,6 @@ namespaces:
       regex: &quot;#logged_.*&quot;
 </code></pre>
 <p><strong>You will need to restart the homeserver after editing the config file before it will take effect.</strong></p>
-<p>|</p>
 <p>To test everything is working correctly, go ahead and explicitly create a room with the alias &quot;#logged_test:localhost&quot; and send a message into the room: the HS will relay the message to the AS by PUTing to /transactions/&lt;tid&gt; and you should see your AS print the event on the terminal. This will monitor any room which has an alias prefix of &quot;#logged_&quot;, but it won't lazily create room aliases if they don't already exist. This means it will only log messages in the room you created before: #logged_test:localhost. Try joining the room &quot;#logged_test2:localhost&quot; without creating it, and it will fail. Let's fix that and add in lazy room creation:</p>
 <pre><code class="language-python">@app.route(&quot;/rooms/&amp;lt;alias&amp;gt;&quot;)
 def query_alias(alias):
@@ -172,7 +165,6 @@ def query_alias(alias):
     return jsonify({})
 </code></pre>
 <p>This makes the application service lazily create a room with the requested alias whenever the HS queries the AS for the existence of that alias (when users try to join that room), allowing any room with the alias prefix #logged_ to be sent to the AS. Now try joining the room &quot;#logged_test2:localhost&quot; and it will work as you'd expect.  You can see that if this were a real bridge, the AS would have checked for the existence of #logged_test2 in the remote network, and then lazily-created it in Matrix as required.</p>
-<p>|</p>
 <p>Application services are powerful components which extend the functionality of homeservers, but they are limited. They can only ever function in a &quot;passive&quot; way. For example, you cannot implement an application service which censors swear words in rooms, because there is no way to prevent the event from being sent. Aside from the fact that censoring will not work when using end-to-end encryption, all federated homeservers would also need to reject the event in order to stop developing an inconsistent event graph. To &quot;actively&quot; monitor events, another component called a &quot;Policy Server&quot; is required, which is beyond the scope of this post.  Also, Application Services can result in a performance bottleneck, as all events on the homeserver must be ordered and sent to the registered application services.  If you are bridging huge amounts of traffic, you may be better off having your bridge directly talk the Server-Server federation API rather than the simpler Application Service API.</p>
 <p>I hope this demonstrates how easy it is to create an application service, along with a few ideas of the kinds of things you can do with them. Obvious uses include build protocol bridges, search engines, invisible bots, etc. For more information on the AS HTTP API, check out the new &lt;a href=&quot;https://matrix.org/docs/spec/#application-service-api&quot;&gt;Application Service API&lt;/a&gt; section in the spec, or the raw drafts and spec in &lt;a href=&quot;https://github.com/matrix-org/matrix-doc/&quot; target=&quot;_blank&quot;&gt;https://github.com/matrix-org/matrix-doc/&lt;/a&gt;.</p>
 </section>
