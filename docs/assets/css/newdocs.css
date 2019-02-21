@@ -42,4 +42,5 @@ h2 {
 
 .try-matrix-now-container img {
     max-height: 200px;
+    float: initial;
 }
