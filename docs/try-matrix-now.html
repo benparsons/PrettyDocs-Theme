@@ -17,7 +17,6 @@
     <!-- Plugins CSS -->    
     <link rel="stylesheet" href="assets/plugins/prism/prism.css">
     <link rel="stylesheet" href="assets/plugins/lightbox/dist/ekko-lightbox.css">
-    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">
 
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
@@ -90,7 +89,7 @@
   });
 
   /* Populate licenses list */
-  var licenses =  'Apache,,Apache-2.0,MIT,GPL3,,LGPL,GPL-1.0-or-later,LGPL-2.1-only,MPL2,BSD,Unknown,ISC,AGPL3,N/A,GPL-3.0-only,CC0-1.0,AGPL-3.0-only,GPL3-only,Artistic2,EUPL,GNU GPL v3,AGPL-3.0-or-later,Unlicense'.split(',');
+  var licenses =  'Apache,,Apache-2.0,MIT,GPL3,,LGPL,GPL-1.0-or-later,LGPL-2.1-only,MPL2,BSD,Unknown,ISC,AGPL3,N/A,GPL-3.0-only,CC0-1.0,AGPL-3.0-only,GPL3-only,Artistic2,EUPL,GNU GPL v3,AGPL-3.0-or-later,Unlicense,https://spdx.org/licenses/BSD-2-Clause.html'.split(',');
   //var licenses =  ",GPL3,AGPL3,Apache,Artistic2,MIT,CC0 1.0,Unknown,N/A,ISC,BSD,LGPL2.1".split(',');
   if (licenses.indexOf("Unknown") === -1) licenses.push("Unknown");
   licenses.forEach((license => {
@@ -261,7 +260,7 @@
     
     <div class="col-md-3 col-12 mb-3 "
         data-featured="false"
-        data-maturity="late-beta"
+        data-maturity="no-longer-maintained"
         data-language="lua"
         data-license="mit">
         <div class="theme-card">
@@ -355,7 +354,7 @@
         data-language="qml"
         data-license="gpl-30-only">
         <div class="theme-card">
-            <a href="projects/client/2018-12-27-fluffychat.html"><img class="img-fluid" src="https://christianpauly.github.io/fluffychat/images/screenshot.png" alt="screenshot" /></a>
+            <a href="projects/client/2018-12-27-fluffychat.html"><img class="img-fluid" src="https://christianpauly.github.io/fluffychat/assets/images/screenshot.png" alt="screenshot" /></a>
             <div class="card-block">
                 <h4 class="card-title">FluffyChat</h4>
                 <p class="card-text">Open, nonprofit and cute client for Ubuntu Touch</p>
@@ -458,7 +457,7 @@
     
     <div class="col-md-4 col-12 mb-3 filterableProject"
         data-featured="false"
-        data-maturity="late-beta"
+        data-maturity="no-longer-maintained"
         data-language="lua"
         data-license="mit">
         <div class="theme-card">
@@ -1167,7 +1166,7 @@
         data-language="qml"
         data-license="gpl-30-only">
         <div class="theme-card">
-            <a href="projects/client/2018-12-27-fluffychat.html"><img class="img-fluid" src="https://christianpauly.github.io/fluffychat/images/screenshot.png" alt="screenshot" /></a>
+            <a href="projects/client/2018-12-27-fluffychat.html"><img class="img-fluid" src="https://christianpauly.github.io/fluffychat/assets/images/screenshot.png" alt="screenshot" /></a>
             <div class="card-block">
                 <h4 class="card-title">FluffyChat</h4>
                 <p class="card-text">Open, nonprofit and cute client for Ubuntu Touch</p>
@@ -1188,6 +1187,21 @@
                 <p class="card-text">communicate with the Matrix using your favourite IRC client (or bot)</p>
             </div><!--//card-block-->
             <a class="mask" href="projects/client/2019-01-02-agentsmith.html"><i class="icon fa fa-search-plus"></i></a>
+        </div><!--//theme-card-->
+    </div>
+    
+    <div class="col-md-4 col-12 mb-3 filterableProject"
+        data-featured="true"
+        data-maturity="beta"
+        data-language="python"
+        data-license="">
+        <div class="theme-card">
+            <a href="projects/client/2019-02-22-weechat-matrix.html"><img class="img-fluid" src="https://raw.githubusercontent.com/benparsons/matrix-notes/master/twim/weechat-matrix.png" alt="screenshot" /></a>
+            <div class="card-block">
+                <h4 class="card-title">weechat-matrix</h4>
+                <p class="card-text">Weechat Matrix protocol script written in python</p>
+            </div><!--//card-block-->
+            <a class="mask" href="projects/client/2019-02-22-weechat-matrix.html"><i class="icon fa fa-search-plus"></i></a>
         </div><!--//theme-card-->
     </div>
     
@@ -1697,7 +1711,7 @@
         <div class="theme-card">
             <a href="projects/bot/2018-04-24-opsdroid-connector.html"><img class="img-fluid" src="/docs/projects/images/opsdroid.png" alt="screenshot" /></a>
             <div class="card-block">
-                <h4 class="card-title">opsdroid connector</h4>
+                <h4 class="card-title">opsdroid</h4>
                 <p class="card-text">A connector for opsdroid to receive and respond to messages</p>
             </div><!--//card-block-->
             <a class="mask" href="projects/bot/2018-04-24-opsdroid-connector.html"><i class="icon fa fa-search-plus"></i></a>
@@ -1851,6 +1865,21 @@
                 <p class="card-text">A maubot that tracks the karma of users.</p>
             </div><!--//card-block-->
             <a class="mask" href="projects/bot/2019-02-12-karma.html"><i class="icon fa fa-search-plus"></i></a>
+        </div><!--//theme-card-->
+    </div>
+    
+    <div class="col-md-3 col-12 mb-3 filterableProject"
+        data-featured="false"
+        data-maturity="late-beta"
+        data-language="python"
+        data-license="https-spdxorg-licenses-bsd-2-clausehtml">
+        <div class="theme-card">
+            
+            <div class="card-block">
+                <h4 class="card-title">Matrix Webhook</h4>
+                <p class="card-text">Post a message to a matrix room with a simple HTTP POST</p>
+            </div><!--//card-block-->
+            <a class="mask" href="projects/bot/2019-02-23-matrix-webhook.html"><i class="icon fa fa-search-plus"></i></a>
         </div><!--//theme-card-->
     </div>
     
@@ -2276,7 +2305,7 @@
         <div class="theme-card">
             <a href="projects/sdk/2018-04-24-opsdroid-connector.html"><img class="img-fluid" src="/docs/projects/images/opsdroid.png" alt="screenshot" /></a>
             <div class="card-block">
-                <h4 class="card-title">opsdroid connector</h4>
+                <h4 class="card-title">opsdroid</h4>
                 <p class="card-text">A connector for opsdroid to receive and respond to messages</p>
             </div><!--//card-block-->
             <a class="mask" href="projects/sdk/2018-04-24-opsdroid-connector.html"><i class="icon fa fa-search-plus"></i></a>
@@ -2571,7 +2600,7 @@
             
             <div class="card-block">
                 <h4 class="card-title">MXToot</h4>
-                <p class="card-text">Matrix-Mastodon bot written on java</p>
+                <p class="card-text">A Matrix<->Mastodon bot written in Java.</p>
             </div><!--//card-block-->
             <a class="mask" href="projects/bridge/2018-12-13-mxtoot.html"><i class="icon fa fa-search-plus"></i></a>
         </div><!--//theme-card-->
@@ -2649,6 +2678,36 @@
                 <p class="card-text">Bridge Matrix to Skype</p>
             </div><!--//card-block-->
             <a class="mask" href="projects/bridge/2019-02-20-matrix-puppet-skype.html"><i class="icon fa fa-search-plus"></i></a>
+        </div><!--//theme-card-->
+    </div>
+    
+    <div class="col-md-3 col-12 mb-3 filterableProject"
+        data-featured="true"
+        data-maturity="beta"
+        data-language="typescript"
+        data-license="apache-20">
+        <div class="theme-card">
+            
+            <div class="card-block">
+                <h4 class="card-title">matrix-bifrost</h4>
+                <p class="card-text">bridging with a variety of backends including libpurple and xmpp.js</p>
+            </div><!--//card-block-->
+            <a class="mask" href="projects/bridge/2019-03-06-matrix-bifrost.html"><i class="icon fa fa-search-plus"></i></a>
+        </div><!--//theme-card-->
+    </div>
+    
+    <div class="col-md-3 col-12 mb-3 filterableProject"
+        data-featured="false"
+        data-maturity="alpha"
+        data-language="java"
+        data-license="">
+        <div class="theme-card">
+            
+            <div class="card-block">
+                <h4 class="card-title">MatrixTexting</h4>
+                <p class="card-text">Android App that will bridge SMS/MMS messages</p>
+            </div><!--//card-block-->
+            <a class="mask" href="projects/bridge/2019-03-06-matrixtexting.html"><i class="icon fa fa-search-plus"></i></a>
         </div><!--//theme-card-->
     </div>
     
@@ -3468,6 +3527,21 @@
                 <p class="card-text">Various tools for maintaining a matrix synapse chat server</p>
             </div><!--//card-block-->
             <a class="mask" href="projects/other/2018-07-18-synapse_scripts.html"><i class="icon fa fa-search-plus"></i></a>
+        </div><!--//theme-card-->
+    </div>
+    
+    <div class="col-md-3 col-12 mb-3 filterableProject"
+        data-featured="false"
+        data-maturity="beta"
+        data-language="shell"
+        data-license="mit">
+        <div class="theme-card">
+            
+            <div class="card-block">
+                <h4 class="card-title">docker-riot-web</h4>
+                <p class="card-text">riot.im docker image generator</p>
+            </div><!--//card-block-->
+            <a class="mask" href="projects/other/2019-03-06-docker-riot-web.html"><i class="icon fa fa-search-plus"></i></a>
         </div><!--//theme-card-->
     </div>
     
